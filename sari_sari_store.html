@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sari-Sari Store</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+        }
+
+        .store-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .store-header {
+            background: linear-gradient(45deg, #ff4757, #ff6b35);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            position: relative;
+        }
+
+        .store-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="20" cy="80" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+
+        .store-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .store-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-top: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .product-shelf {
+            background: linear-gradient(145deg, #ffffff, #f1f3f4);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 3px solid #ff6b35;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-shelf:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .shelf-title {
+            font-weight: bold;
+            color: #ff4757;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: center;
+            padding: 8px;
+            background: linear-gradient(45deg, #fff5f5, #ffe0e0);
+            border-radius: 8px;
+            border: 2px solid #ff6b35;
+        }
+
+        .product-item {
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+            margin: 8px 0;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b35;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 0.95em;
+            color: #333;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .product-item:hover {
+            background: linear-gradient(135deg, #fff5f5, #f0f8ff);
+            transform: translateX(5px);
+        }
+
+        .product-item::before {
+            content: '🛒';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.6;
+        }
+
+        .price-tag {
+            background: #ff4757;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            float: right;
+            margin-left: 10px;
+        }
+
+        .store-footer {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+        }
+
+        .decorative-border {
+            height: 10px;
+            background: repeating-linear-gradient(
+                90deg,
+                #ff4757 0px,
+                #ff4757 20px,
+                #ff6b35 20px,
+                #ff6b35 40px,
+                #ffa502 40px,
+                #ffa502 60px
+            );
+        }
+
+        .special-item {
+            background: linear-gradient(135deg, #fff9c4, #ffecb3) !important;
+            border-left-color: #ffa502 !important;
+        }
+
+        .essential-item {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9) !important;
+            border-left-color: #4caf50 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="store-container">
+        <div class="store-header">
+            <h1 class="store-title">🏪 SARI-SARI STORE 🏪</h1>
+            <p class="store-subtitle">Your Neighborhood Essential Store</p>
+        </div>
+        
+        <div class="decorative-border"></div>
+        
+        <div class="products-grid">
+            <div class="product-shelf">
+                <div class="shelf-title">🥫 CANNED GOODS</div>
+                <div class="product-item special-item">Ligo Sardines <span class="price-tag">₱15</span></div>
+                <div class="product-item">Purefoods Corned Beef <span class="price-tag">₱45</span></div>
+                <div class="product-item">San Marino Tuna <span class="price-tag">₱25</span></div>
+                <div class="product-item">Del Monte Tomato Paste <span class="price-tag">₱12</span></div>
+                <div class="product-item special-item">Maling Luncheon Meat <span class="price-tag">₱35</span></div>
+            </div>
+
+            <div class="product-shelf">
+                <div class="shelf-title">☕ BEVERAGES</div>
+                <div class="product-item essential-item">Nescafe 3-in-1 Coffee <span class="price-tag">₱8</span></div>
+                <div class="product-item">Coffee Mate Creamer <span class="price-tag">₱12</span></div>
+                <div class="product-item">Nestea Pack (Powdered) <span class="price-tag">₱5</span></div>
+                <div class="product-item special-item">Tang Orange Powder <span class="price-tag">₱6</span></div>
+            </div>
+
+            <div class="product-shelf">
+                <div class="shelf-title">🥛 DAIRY & EGGS</div>
+                <div class="product-item essential-item">Fresh Eggs (per piece) <span class="price-tag">₱8</span></div>
+                <div class="product-item">Alaska Evaporated Milk <span class="price-tag">₱22</span></div>
+                <div class="product-item">Bear Brand Milk Powder (repack) <span class="price-tag">₱15</span></div>
+            </div>
+
+            <div class="product-shelf">
+                <div class="shelf-title">🍜 INSTANT NOODLES</div>
+                <div class="product-item special-item">Lucky Me Pancit Canton <span class="price-tag">₱12</span></div>
+                <div class="product-item special-item">Lucky Me Noodle Soup <span class="price-tag">₱10</span></div>
+            </div>
+
+            <div class="product-shelf">
+                <div class="shelf-title">🧂 SEASONINGS & CONDIMENTS</div>
+                <div class="product-item">UFC Ketchup (repack) <span class="price-tag">₱3</span></div>
+                <div class="product-item essential-item">Magic Sarap <span class="price-tag">₱2</span></div>
+                <div class="product-item">Knorr Cubes <span class="price-tag">₱3</span></div>
+                <div class="product-item">Sinigang Mix <span class="price-tag">₱4</span></div>
+                <div class="product-item">Mang Tomas (repack) <span class="price-tag">₱5</span></div>
+                <div class="product-item">Fish Sauce <span class="price-tag">₱8</span></div>
+                <div class="product-item">Vinegar (plastic pack) <span class="price-tag">₱3</span></div>
+                <div class="product-item">Soy Sauce (plastic pack) <span class="price-tag">₱3</span></div>
+            </div>
+
+            <div class="product-shelf">
+                <div class="shelf-title">🍳 COOKING ESSENTIALS</div>
+                <div class="product-item essential-item">Cooking Oil <span class="price-tag">₱25</span></div>
+                <div class="product-item essential-item">Sugar <span class="price-tag">₱20</span></div>
+            </div>
+
+            <div class="product-shelf">
+                <div class="shelf-title">🧴 PERSONAL CARE</div>
+                <div class="product-item">Sunsilk Shampoo (sachet) <span class="price-tag">₱8</span></div>
+                <div class="product-item">Creamsilk Conditioner (sachet) <span class="price-tag">₱8</span></div>
+                <div class="product-item">Safeguard Body Soap <span class="price-tag">₱15</span></div>
+                <div class="product-item">Colgate Toothpaste (sachet) <span class="price-tag">₱5</span></div>
+                <div class="product-item special-item">Modess Sanitary Napkin <span class="price-tag">₱12</span></div>
+            </div>
+        </div>
+
+        <div class="decorative-border"></div>
+        
+        <div class="store-footer">
+            <p>📍 "Lahat ng kailangan mo, meron dito!" 📍</p>
+            <p>Open daily from 6:00 AM to 10:00 PM</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const shelves = document.querySelectorAll('.product-shelf');
+            
+            // Add staggered animation on load
+            shelves.forEach((shelf, index) => {
+                shelf.style.opacity = '0';
+                shelf.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    shelf.style.transition = 'all 0.6s ease';
+                    shelf.style.opacity = '1';
+                    shelf.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+
+            // Add click effects to product items
+            const products = document.querySelectorAll('.product-item');
+            products.forEach(product => {
+                product.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
